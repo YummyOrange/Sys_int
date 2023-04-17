@@ -37,6 +37,21 @@ class RecordController extends AbstractController
         );
     }
 
+    /*public function show(RecordRepository $repository, int $id): Response
+    {
+        $record = $repository->findOneById($id);
+
+        return $this->render(
+            'record/show.html.twig',
+            ['record' => $record]
+        );
+    }*/
+    #[Route(
+        '/{id}',
+        name: 'record_show',
+        requirements: ['id' => '[1-9]\d*'],
+        methods: 'GET'
+    )]
     public function show(RecordRepository $repository, int $id): Response
     {
         $record = $repository->findOneById($id);
@@ -47,3 +62,4 @@ class RecordController extends AbstractController
         );
     }
 }
+
